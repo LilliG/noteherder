@@ -2,7 +2,7 @@ import React from 'react'
 
 const Note = (props) => {
     return(
-        <a className="active">
+        <a className="active" onClick={props.handleNoteClick}>
             <li>
                 <div className="note">
                     <div className="note-title">

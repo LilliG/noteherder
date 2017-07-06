@@ -23,10 +23,14 @@ class App extends Component {
     }
   }
 
+  handleNoteClick = () => {
+      console.log('click')
+    }
+
   render() {
     return (
-      <div className="App">
-        <Main notes={this.state.notes}/>
+      <div className="App" >
+        <Main notes={this.state.notes} handleNoteClick={this.handleNoteClick} />
       </div>
     )
   }
