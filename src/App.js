@@ -20,24 +20,40 @@ class App extends Component {
           body: 'Also very fancy'
         },
       },
-      currentNote: this.blank
+      currentNote: this.blankNote
     }
   }
 
-  blank = {
-          id: null,
+  blankNote = () => {
+    return {
+      id: null,
           title: '',
           body: ''
-          }
-
-  handleNoteClick = (note) => {
-      this.setState({ currentNote: note })
     }
+  }
+          
+
+  setCurrentNote = (note) => {
+    this.setState({ currentNote: note })
+  }
+
+  resetCurrentNote = () => {
+    this.setCurrentNote(this.blankNote())
+  }
 
   render() {
+    const actions = {
+      setCurrentNote: this.setCurrentNote,
+      resetCurrentNote: this.resetCurrentNote,
+    }
+
     return (
       <div className="App" >
-        <Main notes={this.state.notes} currentNote={this.state.currentNote} handleNoteClick={this.handleNoteClick} />
+        <Main 
+          notes={this.state.notes} 
+          currentNote={this.state.currentNote} 
+          {...actions} 
+        />
       </div>
     )
   }
