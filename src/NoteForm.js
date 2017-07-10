@@ -1,11 +1,30 @@
 import React from 'react'
+import RichTextEditor from 'react-rte'
 
 import './NoteForm.css'
 
 class NoteForm extends React.Component {
+    constructor(props) {
+        super(props)
+        this.state = {
+            editorValue: RichTextEditor.createEmptyValue(),
+        }
+    }
+
+    // componentWillRecieveProps = (nextProps) => {
+        
+    // }
+
     handleChange = (ev) => {
         const note = {...this.props.currentNote}
         note[ev.target.name] = ev.target.value
+        this.props.saveNote(note)
+    }
+
+    handleEditorChange = (editorValue) => {
+        this.setState({ editorValue })
+        const note = {...this.props.currentNote}
+        note.body = editorValue.toString('html')
         this.props.saveNote(note)
     }
 
@@ -33,11 +52,11 @@ class NoteForm extends React.Component {
                         />
                     </p>
                     
-                    <textarea 
+                    <RichTextEditor 
                         name="body" 
-                        value={currentNote.body}  
-                        onChange={this.handleChange}
-                    ></textarea>
+                        value={this.state.editorValue}  
+                        onChange={this.handleEditorChange}
+                    ></RichTextEditor>
                 </form>
             </div>
         )
