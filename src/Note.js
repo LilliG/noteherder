@@ -11,11 +11,10 @@ const Note = ({setCurrentNote, note}) => {
                     <div className="note-title">
                         {note.title}
                     </div>
-                    <div 
+                    <div
                         className="note-body"
-                        dangerouslySetInnerHTML={{__html: note.body}}
-                    >
-                    </div>
+                        dangerouslySetInnerHTML={{ __html: note.body }}
+                    ></div>
                 </div>
             </li>
         </a>

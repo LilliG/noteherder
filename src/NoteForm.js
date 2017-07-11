@@ -51,8 +51,6 @@ class NoteForm extends React.Component {
     }
 
     render() {
-        const {currentNote} = this.props
-
         return (
             <div className="NoteForm">
                 <div className="form-actions">
