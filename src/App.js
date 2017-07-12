@@ -12,7 +12,6 @@ class App extends Component {
 
     this.state = {
       notes: {},
-      currentNoteId: null,
       uid: null,
     }
   }
@@ -45,14 +44,6 @@ class App extends Component {
       }
     )
   }          
-
-  setCurrentNote = (note) => {
-    this.setState({ currentNoteId: note.id })
-  }
-
-  resetCurrentNote = () => {
-    this.setCurrentNote( {id: null} )
-  }
 
   saveNote = (note) => {
     let shouldRedirect = false
@@ -98,7 +89,6 @@ class App extends Component {
       base.removeBinding(this.bindingRef)
     }
     this.setState({ uid: null, notes: {} })
-    this.resetCurrentNote()
   }
 
   signOut = () => {
@@ -114,7 +104,6 @@ class App extends Component {
 
     const noteData = {
       notes: this.state.notes,
-      currentNoteId: this.state.currentNoteId,
     }
 
     return (
