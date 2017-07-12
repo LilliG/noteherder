@@ -13,8 +13,13 @@ class NoteForm extends React.Component {
     }
 
     componentWillReceiveProps = (nextProps) => {
-        const nextId = nextProps.match.params.id
-        const note = nextProps.notes[nextId] || this.blankNote()
+        const idFromUrl = nextProps.match.params.id
+        const note = nextProps.notes[idFromUrl] || this.blankNote()
+
+        const noteNoteFound = idFromUrl && !note.id
+        if (noteNoteFound) {
+            this.props.history.push('/notes')
+        }
 
         let editorValue = this.state.editorValue
         if (editorValue.toString('html') !== note.body) {
