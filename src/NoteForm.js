@@ -18,7 +18,7 @@ class NoteForm extends React.Component {
 
         const noteNoteFound = idFromUrl && !note.id
         if (noteNoteFound && nextProps.firebaseNotesSynced) {
-            this.props.history.push('/notes')
+            this.props.history.replace('/notes')
         }
 
         let editorValue = this.state.editorValue
