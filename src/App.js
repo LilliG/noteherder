@@ -104,10 +104,6 @@ class App extends Component {
       signOut: this.signOut
     }
 
-    const noteData = {
-      notes: this.state.notes,
-    }
-
     return (
       <div className="App" >
         <Switch>
@@ -125,7 +121,7 @@ class App extends Component {
               this.signedIn()
                 ? <Main 
                   {...actions}
-                  {...noteData}
+                  notes={this.state.notes}
                   firebaseNotesSynced={this.state.firebaseNotesSynced}
                   />
                 : <Redirect to="/sign-in"/>
