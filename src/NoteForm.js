@@ -31,15 +31,19 @@ class NoteForm extends React.Component {
 
     blankNote = () => {
         return {
-        id: null,
+            id: null,
             title: '',
-            body: ''
+            body: '',
+            updatedAt: null,
         }
     }
 
     handleChange = (ev) => {
         const note = {...this.state.note}
-        note[ev.target.name] = ev.target.value
+        note.title = ev.target.value
+
+        note.updatedAt = Date.now()
+
         this.setState(
             { note },
             () => this.props.saveNote(note)
@@ -49,6 +53,9 @@ class NoteForm extends React.Component {
     handleEditorChange = (editorValue) => {
         const note = {...this.state.note}
         note.body = editorValue.toString('html')
+
+        note.updatedAt = Date.now()
+
         this.setState(
             { note, editorValue },
             () => this.props.saveNote(note)
