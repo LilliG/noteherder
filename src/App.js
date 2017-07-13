@@ -55,9 +55,9 @@ class App extends Component {
       shouldRedirect = true
     }
 
+    note.updatedAt = Date.now()
     const notes = {...this.state.notes}
     notes[note.id] = note
-    note.updatedAt = Date.now()
 
     this.setState({notes})
     if (shouldRedirect) {

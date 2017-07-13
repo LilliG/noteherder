@@ -45,7 +45,7 @@ class NoteForm extends React.Component {
         this.setState(
             { note },
             () => this.props.saveNote(note)
-            )
+        )
     }
 
     handleEditorChange = (editorValue) => {
